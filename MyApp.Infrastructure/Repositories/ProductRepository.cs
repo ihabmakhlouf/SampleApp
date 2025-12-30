@@ -20,6 +20,11 @@ namespace MyApp.Infrastructure.Repositories
                 return product;
             }
 
+        public async Task<Product> GetProductByIdAsync(Guid id)
+            {
+               return await dbContext.products.FirstOrDefaultAsync(x => x.Id == id);
+            }
+
         public async Task<IEnumerable<Product>> GetProductsAsync()
             {
                 return await dbContext.products.ToListAsync();
