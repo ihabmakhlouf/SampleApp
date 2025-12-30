@@ -11,7 +11,7 @@ namespace MyApp.Api.Controllers
     public class ProductController(ISender sender) : ControllerBase
         {
 
-        [HttpPost]
+        [HttpPost("AddProduct")]
         public async Task<IActionResult> AddProductAsync([FromBody] Product product)
             {
             var newProduct = await sender.Send(new AddProductCommand(product));
