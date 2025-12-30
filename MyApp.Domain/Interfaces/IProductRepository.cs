@@ -12,6 +12,8 @@ namespace MyApp.Domain.Interfaces
         Task<IEnumerable<Product>> GetProductsAsync();
         Task<Product> AddProductAsync(Product product);
         Task<Product> GetProductByIdAsync(Guid id);
-        
+        Task<bool> UpdateProductAsync(Product product, Guid id);
+
+
         }
     }

@@ -18,6 +18,13 @@ namespace MyApp.Api.Controllers
             return Ok(newProduct);
             }
 
+        [HttpPost("UpdateProduct")]
+        public async Task<IActionResult> UpdateProductAsync([FromBody] Product product, Guid id)
+            {
+            var result = await sender.Send(new UpdateProductCommand(id, product));
+            return Ok(result);
+            }
+
         [HttpGet("GetAllProducts")]
         public async Task<IActionResult> GetAllProductsAsync()
             {
