@@ -25,6 +25,13 @@ namespace MyApp.Api.Controllers
             return Ok(result);
             }
 
+        [HttpPost("DeleteProductById")]
+        public async Task<IActionResult> DeleteProductByIdAsync(Guid id)
+            {
+            var result = await sender.Send(new DeleteProductByIdCommand(id));
+            return Ok(result);
+            }
+
         [HttpGet("GetAllProducts")]
         public async Task<IActionResult> GetAllProductsAsync()
             {

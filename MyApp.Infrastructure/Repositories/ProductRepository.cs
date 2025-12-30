@@ -44,5 +44,18 @@ namespace MyApp.Infrastructure.Repositories
             {
                 return await dbContext.products.ToListAsync();
             }
+
+        public async Task<bool> DeleteProductByIdAsync(Guid id)
+            {
+             var product = await GetProductByIdAsync(id);
+            if (product is not null)
+                {
+                dbContext.products.Remove(product);
+                await dbContext.SaveChangesAsync();
+                return true;
+                }
+            return false;
+            }
+
         }
     }

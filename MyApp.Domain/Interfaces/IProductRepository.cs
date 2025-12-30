@@ -13,6 +13,7 @@ namespace MyApp.Domain.Interfaces
         Task<Product> AddProductAsync(Product product);
         Task<Product> GetProductByIdAsync(Guid id);
         Task<bool> UpdateProductAsync(Product product, Guid id);
+        Task<bool> DeleteProductByIdAsync(Guid id);
 
 
         }
