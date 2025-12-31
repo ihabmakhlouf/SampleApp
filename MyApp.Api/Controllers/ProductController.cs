@@ -11,11 +11,25 @@ namespace MyApp.Api.Controllers
     public class ProductController(ISender sender) : ControllerBase
         {
 
-        [HttpPost]
+        [HttpPost("AddProduct")]
         public async Task<IActionResult> AddProductAsync([FromBody] Product product)
             {
             var newProduct = await sender.Send(new AddProductCommand(product));
             return Ok(newProduct);
+            }
+
+        [HttpPost("UpdateProduct")]
+        public async Task<IActionResult> UpdateProductAsync([FromBody] Product product, Guid id)
+            {
+            var result = await sender.Send(new UpdateProductCommand(id, product));
+            return Ok(result);
+            }
+
+        [HttpPost("DeleteProductById")]
+        public async Task<IActionResult> DeleteProductByIdAsync(Guid id)
+            {
+            var result = await sender.Send(new DeleteProductByIdCommand(id));
+            return Ok(result);
             }
 
         [HttpGet("GetAllProducts")]
