@@ -2,10 +2,10 @@
 using MyApp.Domain.Entities;
 
 
-namespace MyApp.Infrastructure.Data
+namespace MyApp.Infrastructure.Data;
+
+public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {
-    public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
-        {
-            public DbSet<Product> products { get; set; }
-        }
+    public DbSet<Product> products { get; set; }
     }
+

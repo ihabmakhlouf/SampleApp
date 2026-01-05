@@ -2,11 +2,6 @@
 using MyApp.Domain.Entities;
 using MyApp.Domain.Interfaces;
 using MyApp.Infrastructure.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyApp.Infrastructure.Repositories
     {
@@ -15,7 +10,7 @@ namespace MyApp.Infrastructure.Repositories
         public async Task<Product> AddProductAsync(Product product)
             {
                 product.Id = Guid.NewGuid();
-                dbContext.Add(product);
+                await dbContext.AddAsync(product);
                 await dbContext.SaveChangesAsync();
                 return product;
             }
