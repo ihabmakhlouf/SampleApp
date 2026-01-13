@@ -1,0 +1,6 @@
+@HubAggregator_HostAddress = http://localhost:5171
+
+GET {{HubAggregator_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
